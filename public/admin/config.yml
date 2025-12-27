@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: YOUR_GITHUB_USERNAME/orangecake  # Replace with your repo
   branch: main
+  base_url: https://YOUR_SITE_NAME.netlify.app  # Replace with your Netlify site URL
+  auth_endpoint: /api/auth  # Points to our Auth0 handler
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"

@@ -1,12 +1,17 @@
 .footer {
     padding: 4rem 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    margin-top: 4rem;
+    border-top: 1px solid rgba(255, 107, 53, 0.1);
+    margin-top: 6rem;
     text-align: center;
+    background: linear-gradient(180deg, transparent 0%, rgba(255, 107, 53, 0.02) 100%);
 }
 
 .text {
     margin: 0;
     font-size: 0.9rem;
     color: var(--color-text-muted);
+}
+
+.text a {
+    color: var(--color-orange);
 }

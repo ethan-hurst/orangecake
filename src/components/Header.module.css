@@ -3,9 +3,9 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    backdrop-filter: blur(10px);
-    background: rgba(10, 10, 15, 0.8);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    background: rgba(26, 24, 20, 0.9);
+    border-bottom: 1px solid rgba(255, 107, 53, 0.1);
 }
 
 .headerContainer {
@@ -19,17 +19,23 @@
     font-weight: 800;
     font-size: 1.5rem;
     letter-spacing: -0.02em;
+    color: var(--color-orange);
+}
+
+.logo:hover {
+    color: var(--color-orange-light);
 }
 
 .nav {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .navLink {
     font-weight: 500;
     color: var(--color-text-muted);
     position: relative;
+    padding: 0.5rem 0;
     transition: color 0.2s ease;
 }
 
@@ -40,11 +46,11 @@
 .navLink::after {
     content: '';
     position: absolute;
-    bottom: -4px;
+    bottom: 0;
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--color-secondary);
+    background: var(--color-orange);
     transition: width 0.3s ease;
 }
 
