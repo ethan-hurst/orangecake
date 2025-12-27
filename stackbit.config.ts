@@ -1,8 +1,23 @@
-import { defineStackbitConfig, SiteMapEntry, DocumentStringLikeFieldNonLocalized } from '@stackbit/types';
+import { defineStackbitConfig, SiteMapEntry } from '@stackbit/types';
 import { GitContentSource } from '@stackbit/cms-git';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Handle both ESM and CommonJS environments
+const getDirname = () => {
+    try {
+        // ESM
+        return path.dirname(fileURLToPath(import.meta.url));
+    } catch {
+        // CommonJS
+        return __dirname;
+    }
+};
+
+const rootPath = getDirname();
 
 const gitContentSource = new GitContentSource({
-    rootPath: __dirname,
+    rootPath,
     contentDirs: ['content'],
     models: [
         // Page Models
