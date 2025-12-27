@@ -1,4 +1,8 @@
 import { GitContentSource } from '@stackbit/cms-git';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default {
     stackbitVersion: '~0.6.0',
@@ -6,7 +10,7 @@ export default {
     nodeVersion: '18',
     contentSources: [
         new GitContentSource({
-            rootPath: import.meta.dirname,
+            rootPath: __dirname,
             contentDirs: ['content'],
             models: [
                 {
