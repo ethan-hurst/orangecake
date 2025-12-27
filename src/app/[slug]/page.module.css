@@ -1,0 +1,25 @@
+.pageContent {
+    padding: 4rem 2rem;
+}
+
+.pageTitle {
+    margin-bottom: 2rem;
+}
+
+.prose {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+}
+
+.prose h1,
+.prose h2 {
+    color: var(--color-text);
+    margin-top: 2rem;
+}
+
+.prose p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}

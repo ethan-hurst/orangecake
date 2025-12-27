@@ -1,0 +1,61 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "content/pages/home.json"
+        label: "Home Page"
+        name: "home"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Hero Title", name: "hero_title", widget: "string" }
+          - { label: "Hero Description", name: "hero_description", widget: "markdown" }
+          - { label: "Sections", name: "sections", widget: "list", types: [
+              { label: "Features Grid", name: "features_grid", widget: "object", fields: [
+                  { label: "Title", name: "title", widget: "string" },
+                  { label: "Features", name: "features", widget: "list", fields: [
+                      { label: "Icon", name: "icon", widget: "image" },
+                      { label: "Title", name: "title", widget: "string" },
+                      { label: "Description", name: "description", widget: "text" }
+                  ]}
+              ]}
+          ]}
+      - file: "content/pages/about.json"
+        label: "About Page"
+        name: "about"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "posts"
+    label: "Blog Posts"
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Featured Image", name: "thumbnail", widget: "image", required: false }
+
+  - name: "settings"
+    label: "Settings"
+    files:
+      - file: "content/settings/global.json"
+        label: "Global Settings"
+        name: "global"
+        fields:
+          - { label: "Site Title", name: "site_title", widget: "string" }
+          - { label: "Logo", name: "logo", widget: "image" }
+          - { label: "Footer Text", name: "footer_text", widget: "string" }
+          - { label: "Navigation Items", name: "nav_items", widget: "list", fields: [
+              { label: "Label", name: "label", widget: "string" },
+              { label: "Path", name: "path", widget: "string" }
+          ]}

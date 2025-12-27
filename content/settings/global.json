@@ -1,0 +1,18 @@
+{
+    "site_title": "Orangecake",
+    "footer_text": "© 2025 Orangecake Template. All rights reserved.",
+    "nav_items": [
+        {
+            "label": "Home",
+            "path": "/"
+        },
+        {
+            "label": "About",
+            "path": "/about"
+        },
+        {
+            "label": "Blog",
+            "path": "/blog"
+        }
+    ]
+}
