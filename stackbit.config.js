@@ -1,6 +1,7 @@
+import { defineStackbitConfig } from '@stackbit/types';
 import { GitContentSource } from '@stackbit/cms-git';
 
-export default {
+export default defineStackbitConfig({
     stackbitVersion: '~0.6.0',
     ssgName: 'nextjs',
     nodeVersion: '18',
@@ -102,22 +103,38 @@ export default {
         })
     ],
     siteMap: ({ documents, models }) => {
-        const pageModels = models.filter(m => m.type === 'page').map(m => m.name);
+        const pageModels = models.filter(m => m.type === 'page');
+
         return documents
-            .filter(doc => pageModels.includes(doc.modelName))
+            .filter(doc => pageModels.some(m => m.name === doc.modelName))
             .map(doc => {
                 switch (doc.modelName) {
                     case 'home':
-                        return { urlPath: '/', document: doc, isHomePage: true };
+                        return {
+                            stableId: doc.id,
+                            urlPath: '/',
+                            document: doc,
+                            isHomePage: true
+                        };
                     case 'about':
-                        return { urlPath: '/about', document: doc };
+                        return {
+                            stableId: doc.id,
+                            urlPath: '/about',
+                            document: doc,
+                            isHomePage: false
+                        };
                     case 'post':
                         const slug = doc.id.replace('content/posts/', '').replace('.md', '');
-                        return { urlPath: `/blog/${slug}`, document: doc };
+                        return {
+                            stableId: doc.id,
+                            urlPath: `/blog/${slug}`,
+                            document: doc,
+                            isHomePage: false
+                        };
                     default:
                         return null;
                 }
             })
             .filter(Boolean);
     }
-};
+});
