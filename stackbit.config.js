@@ -10,6 +10,8 @@ export default {
     nodeVersion: '18',
     contentSources: [
         new GitContentSource({
+            repoUrl: 'https://github.com/ethan-hurst/orangecake',
+            branch: 'main',
             rootPath: __dirname,
             contentDirs: ['content'],
             models: [
