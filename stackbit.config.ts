@@ -1,26 +1,11 @@
 import { defineStackbitConfig, SiteMapEntry } from '@stackbit/types';
 import { GitContentSource } from '@stackbit/cms-git';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-// Handle both ESM and CommonJS environments
-const getDirname = () => {
-    try {
-        // ESM
-        return path.dirname(fileURLToPath(import.meta.url));
-    } catch {
-        // CommonJS
-        return __dirname;
-    }
-};
-
-const rootPath = getDirname();
 
 const gitContentSource = new GitContentSource({
-    rootPath,
+    rootPath: __dirname,
     contentDirs: ['content'],
     models: [
-        // Page Models
+        // Home Page
         {
             name: 'home',
             type: 'page',
@@ -38,6 +23,7 @@ const gitContentSource = new GitContentSource({
                 }
             ]
         },
+        // About Page
         {
             name: 'about',
             type: 'page',
@@ -48,6 +34,7 @@ const gitContentSource = new GitContentSource({
                 { name: 'body', type: 'markdown', label: 'Body' }
             ]
         },
+        // Blog Post
         {
             name: 'post',
             type: 'page',
@@ -60,8 +47,7 @@ const gitContentSource = new GitContentSource({
                 { name: 'thumbnail', type: 'image', label: 'Featured Image' }
             ]
         },
-
-        // Data Models
+        // Global Settings
         {
             name: 'settings',
             type: 'data',
@@ -83,8 +69,7 @@ const gitContentSource = new GitContentSource({
                 }
             ]
         },
-
-        // Object Models (for nested content)
+        // Features Grid (nested object)
         {
             name: 'features_grid',
             type: 'object',
@@ -120,40 +105,24 @@ export const config = defineStackbitConfig({
     ssgName: 'nextjs',
     nodeVersion: '18',
     contentSources: [gitContentSource],
-
-    // Site map for Visual Editor navigation
-    siteMap: ({ documents, models }): SiteMapEntry[] => {
+    siteMap: ({ documents, models }) => {
         const pageModels = models.filter(m => m.type === 'page').map(m => m.name);
-
         return documents
             .filter(doc => pageModels.includes(doc.modelName))
             .map(doc => {
-                if (doc.modelName === 'home') {
-                    return {
-                        urlPath: '/',
-                        document: doc,
-                        isHomePage: true
-                    };
+                switch (doc.modelName) {
+                    case 'home':
+                        return { urlPath: '/', document: doc, isHomePage: true };
+                    case 'about':
+                        return { urlPath: '/about', document: doc };
+                    case 'post':
+                        const slug = doc.id.replace('content/posts/', '').replace('.md', '');
+                        return { urlPath: `/blog/${slug}`, document: doc };
+                    default:
+                        return null;
                 }
-
-                if (doc.modelName === 'about') {
-                    return {
-                        urlPath: '/about',
-                        document: doc
-                    };
-                }
-
-                if (doc.modelName === 'post') {
-                    const slug = doc.id.replace('content/posts/', '').replace('.md', '');
-                    return {
-                        urlPath: `/blog/${slug}`,
-                        document: doc
-                    };
-                }
-
-                return null;
             })
-            .filter(Boolean) as SiteMapEntry[];
+            .filter(Boolean) as any;
     }
 });
 
