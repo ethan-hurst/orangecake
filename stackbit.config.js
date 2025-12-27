@@ -1,8 +1,4 @@
 import { GitContentSource } from '@stackbit/cms-git';
-import { fileURLToPath } from 'url';
-import path from 'path';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default {
     stackbitVersion: '~0.6.0',
@@ -12,7 +8,7 @@ export default {
         new GitContentSource({
             repoUrl: 'https://github.com/ethan-hurst/orangecake',
             branch: 'main',
-            rootPath: __dirname,
+            rootPath: process.cwd(),
             contentDirs: ['content'],
             models: [
                 {
