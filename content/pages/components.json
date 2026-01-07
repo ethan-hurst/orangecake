@@ -25,6 +25,24 @@
                     "description": "Description for feature 3"
                 }
             ]
+        },
+        {
+            "type": "field_types_demo",
+            "title": "Kitchen Sink Demo",
+            "short_text": "This is a short text field.",
+            "long_text": "This is a longer text field that supports multiple lines.\nIt allows for more detailed content.",
+            "markdown_content": "**Markdown** is supported here. You can use *italics*, [links](#), and more.",
+            "number_count": 42,
+            "is_active": true,
+            "theme_color": "blue",
+            "bg_color": "#e6f7ff",
+            "event_date": "2025-12-25",
+            "event_time": "2025-12-25T10:00:00Z",
+            "tags": [
+                "Next.js",
+                "React",
+                "Netlify"
+            ]
         }
     ]
 }

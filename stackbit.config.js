@@ -60,7 +60,52 @@ export default defineStackbitConfig({
                             name: 'sections',
                             type: 'list',
                             label: 'Sections',
-                            items: { type: 'model', models: ['hero', 'features_grid'] }
+                            items: { type: 'model', models: ['hero', 'features_grid', 'field_types_demo'] }
+                        }
+                    ]
+                },
+                {
+                    name: 'field_types_demo',
+                    type: 'object',
+                    label: 'Field Types Demo',
+                    fields: [
+                        { name: 'title', type: 'string', label: 'Section Title', default: 'Field Types Demo' },
+
+                        // Basic Types
+                        { name: 'short_text', type: 'string', label: 'Short Text' },
+                        { name: 'long_text', type: 'text', label: 'Long Text (Multiline)' },
+                        { name: 'markdown_content', type: 'markdown', label: 'Markdown Content' },
+
+                        // Numbers & Logic
+                        { name: 'number_count', type: 'number', label: 'Number' },
+                        { name: 'is_active', type: 'boolean', label: 'Toggle/Boolean' },
+
+                        // Selectors
+                        {
+                            name: 'theme_color',
+                            type: 'enum',
+                            label: 'Theme Color (Enum)',
+                            options: [
+                                { label: 'Light', value: 'light' },
+                                { label: 'Dark', value: 'dark' },
+                                { label: 'Blue', value: 'blue' }
+                            ]
+                        },
+                        { name: 'bg_color', type: 'color', label: 'Color Picker' },
+
+                        // Dates
+                        { name: 'event_date', type: 'date', label: 'Date' },
+                        { name: 'event_time', type: 'datetime', label: 'Date & Time' },
+
+                        // Media
+                        { name: 'main_image', type: 'image', label: 'Image' },
+
+                        // Lists
+                        {
+                            name: 'tags',
+                            type: 'list',
+                            label: 'Tags (List of Strings)',
+                            items: { type: 'string' }
                         }
                     ]
                 },

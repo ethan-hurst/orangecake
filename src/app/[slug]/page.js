@@ -5,6 +5,7 @@ import styles from './page.module.css';
 
 import Hero from '@/components/Hero';
 import FeaturesGrid from '@/components/FeaturesGrid';
+import FieldTypesDemo from '@/components/FieldTypesDemo';
 
 export default async function Page({ params }) {
   const { slug } = await params;
@@ -41,6 +42,15 @@ export default async function Page({ params }) {
               key={index}
               title={section.title}
               features={section.features}
+              fieldPath={`sections.${index}`}
+            />
+          );
+        }
+        if (section.type === 'field_types_demo') {
+          return (
+            <FieldTypesDemo
+              key={index}
+              {...section}
               fieldPath={`sections.${index}`}
             />
           );
