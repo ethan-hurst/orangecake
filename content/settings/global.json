@@ -14,7 +14,6 @@
         {
             "label": "Blog",
             "path": "/blog"
-        },
-        {}
+        }
     ]
 }
