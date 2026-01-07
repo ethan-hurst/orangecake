@@ -22,15 +22,6 @@
                     }
                 ]
             }
-        },
-        {
-            "type": "features_grid",
-            "title": "Netlify Create ",
-            "features": [
-                {
-                    "title": "Support for Netlify Create!"
-                }
-            ]
         }
     ]
 }
