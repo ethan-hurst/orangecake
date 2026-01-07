@@ -21,7 +21,10 @@
                         "description": "React, Decap CMS, and Netlify."
                     }
                 ]
-            }
+            },
+            "features": [
+                {}
+            ]
         }
     ]
 }
