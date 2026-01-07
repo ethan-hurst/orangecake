@@ -24,7 +24,8 @@
             }
         },
         {
-            "type": "features_grid"
+            "type": "features_grid",
+            "title": "Netlify Create "
         }
     ]
 }
