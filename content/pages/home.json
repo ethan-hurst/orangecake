@@ -23,7 +23,9 @@
                 ]
             },
             "features": [
-                {}
+                {
+                    "title": "Test"
+                }
             ]
         }
     ]
