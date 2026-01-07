@@ -25,7 +25,10 @@
         },
         {
             "type": "features_grid",
-            "title": "Netlify Create "
+            "title": "Netlify Create ",
+            "features": [
+                {}
+            ]
         }
     ]
 }
