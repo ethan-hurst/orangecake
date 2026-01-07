@@ -1,27 +1,30 @@
 {
-  "type": "home",
-  "title": "Welcome to Orangecake",
-  "hero_title": "Modern Website Template",
-  "hero_description": "A high-performance React template built with Next.js and Netlify Visual Editor.",
-  "sections": [
-    {
-      "features_grid": {
-        "title": "Why Orangecake?",
-        "features": [
-          {
-            "title": "Fast Performance",
-            "description": "Built on Next.js for optional static generation and edge delivery."
-          },
-          {
-            "title": "Visual Editing",
-            "description": "Integrated with Netlify Visual Editor for seamless content management."
-          },
-          {
-            "title": "Modern Stack",
-            "description": "React, Decap CMS, and Netlify."
-          }
-        ]
-      }
-    }
-  ]
+    "type": "home",
+    "title": "Welcome to Orangecake",
+    "hero_title": "Modern Website Template",
+    "hero_description": "A high-performance React template built with Next.js and Netlify Visual Editor.",
+    "sections": [
+        {
+            "features_grid": {
+                "title": "Why Orangecake?",
+                "features": [
+                    {
+                        "title": "Fast Performance",
+                        "description": "Built on Next.js for optional static generation and edge delivery."
+                    },
+                    {
+                        "title": "Visual Editing",
+                        "description": "Integrated with Netlify Visual Editor for seamless content management."
+                    },
+                    {
+                        "title": "Modern Stack",
+                        "description": "React, Decap CMS, and Netlify."
+                    }
+                ]
+            }
+        },
+        {
+            "type": "features_grid"
+        }
+    ]
 }
