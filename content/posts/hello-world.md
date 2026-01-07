@@ -1,5 +1,6 @@
 ---
 title: "Hello World and Welcome to Orangecake"
+type: "post"
 date: "2025-01-01T12:00:00Z"
 thumbnail: "/images/uploads/sample-post.jpg"
 ---

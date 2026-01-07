@@ -1,4 +1,5 @@
 {
+    "type": "about",
     "title": "About Orangecake",
     "body": "Orangecake is a modern website template designed for performance and ease of use.\n\n## Our Mission\n\nTo provide a seamless visual editing experience with Netlify Visual Editor and Next.js.\n\n## The Team\n\nBuilt by passionate developers who love clean code and great design."
 }
