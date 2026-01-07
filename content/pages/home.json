@@ -28,6 +28,9 @@
                     "description": "test"
                 }
             ]
+        },
+        {
+            "type": "features_grid"
         }
     ]
 }
