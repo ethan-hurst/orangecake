@@ -2,6 +2,23 @@ import { getPageContent } from '@/lib/api';
 import Hero from '@/components/Hero';
 import FeaturesGrid from '@/components/FeaturesGrid';
 
+export async function generateMetadata() {
+  const content = getPageContent('home');
+  if (!content) return {};
+
+  const { title, seo } = content;
+
+  return {
+    title: seo?.metaTitle || title,
+    description: seo?.metaDescription,
+    openGraph: {
+      title: seo?.metaTitle || title,
+      description: seo?.metaDescription,
+      images: seo?.ogImage ? [seo.ogImage] : undefined,
+    }
+  };
+}
+
 export default function Home() {
   const content = getPageContent('home');
 

@@ -3,6 +3,10 @@
   "title": "Welcome to Orangecake",
   "hero_title": "Modern Website Template",
   "hero_description": "A high-performance React template built with Next.js and Netlify Visual Editor.",
+  "seo": {
+    "metaTitle": "Orangecake - The Best Next.js Starter",
+    "metaDescription": "Build better websites faster with Orangecake and Netlify Visual Editor."
+  },
   "sections": [
     {
       "type": "features_grid",

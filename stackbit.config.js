@@ -21,12 +21,23 @@ export default defineStackbitConfig({
                         { name: 'title', type: 'string', label: 'Title', required: true },
                         { name: 'hero_title', type: 'string', label: 'Hero Title' },
                         { name: 'hero_description', type: 'markdown', label: 'Hero Description' },
+                        { name: 'seo', type: 'model', models: ['seo'], label: 'SEO Settings' },
                         {
                             name: 'sections',
                             type: 'list',
                             label: 'Sections',
                             items: { type: 'model', models: ['features_grid'] }
                         }
+                    ]
+                },
+                {
+                    name: 'seo',
+                    type: 'object',
+                    label: 'SEO Settings',
+                    fields: [
+                        { name: 'metaTitle', type: 'string', label: 'Meta Title' },
+                        { name: 'metaDescription', type: 'text', label: 'Meta Description' },
+                        { name: 'ogImage', type: 'image', label: 'Social Share Image' }
                     ]
                 },
                 {
@@ -45,7 +56,8 @@ export default defineStackbitConfig({
                     filePath: 'content/pages/about.json',
                     fields: [
                         { name: 'title', type: 'string', label: 'Title', required: true },
-                        { name: 'body', type: 'markdown', label: 'Body' }
+                        { name: 'body', type: 'markdown', label: 'Body' },
+                        { name: 'seo', type: 'model', models: ['seo'], label: 'SEO Settings' }
                     ]
                 },
                 {
@@ -56,6 +68,7 @@ export default defineStackbitConfig({
                     fields: [
                         { name: 'title', type: 'string', label: 'Title', required: true },
                         { name: 'body', type: 'markdown', label: 'Body' },
+                        { name: 'seo', type: 'model', models: ['seo'], label: 'SEO Settings' },
                         {
                             name: 'sections',
                             type: 'list',
@@ -118,7 +131,8 @@ export default defineStackbitConfig({
                         { name: 'title', type: 'string', label: 'Title', required: true },
                         { name: 'date', type: 'datetime', label: 'Publish Date' },
                         { name: 'body', type: 'markdown', label: 'Body' },
-                        { name: 'thumbnail', type: 'image', label: 'Featured Image' }
+                        { name: 'thumbnail', type: 'image', label: 'Featured Image' },
+                        { name: 'seo', type: 'model', models: ['seo'], label: 'SEO Settings' }
                     ]
                 },
                 {

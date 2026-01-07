@@ -1,11 +1,29 @@
-import { getPageContent } from '@/lib/api';
-import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import styles from './page.module.css';
 
 import Hero from '@/components/Hero';
 import FeaturesGrid from '@/components/FeaturesGrid';
 import FieldTypesDemo from '@/components/FieldTypesDemo';
+import { getPageContent } from '@/lib/api';
+import { notFound } from 'next/navigation';
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const content = getPageContent(slug);
+  if (!content) return {};
+
+  const { title, seo } = content;
+
+  return {
+    title: seo?.metaTitle || title,
+    description: seo?.metaDescription,
+    openGraph: {
+      title: seo?.metaTitle || title,
+      description: seo?.metaDescription,
+      images: seo?.ogImage ? [seo.ogImage] : undefined,
+    },
+  };
+}
 
 export default async function Page({ params }) {
   const { slug } = await params;
