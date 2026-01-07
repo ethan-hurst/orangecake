@@ -24,7 +24,8 @@
             },
             "features": [
                 {
-                    "title": "Test"
+                    "title": "Test",
+                    "description": "test"
                 }
             ]
         }
