@@ -16,6 +16,7 @@ export default function Home() {
       <Hero
         title={hero_title || title}
         description={hero_description}
+        objectId={content._id}
       />
       {sections?.map((section, index) => {
         if (section.features_grid) {
@@ -24,6 +25,7 @@ export default function Home() {
               key={index}
               title={section.features_grid.title}
               features={section.features_grid.features}
+              fieldPath={`sections.${index}.features_grid`}
             />
           );
         }

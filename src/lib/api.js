@@ -5,10 +5,12 @@ import matter from 'gray-matter';
 const contentDirectory = path.join(process.cwd(), 'content');
 
 export function getPageContent(pageName) {
+  const relativePath = `content/pages/${pageName}.json`;
   const fullPath = path.join(contentDirectory, `pages/${pageName}.json`);
   if (!fs.existsSync(fullPath)) return null;
   const fileContents = fs.readFileSync(fullPath, 'utf8');
-  return JSON.parse(fileContents);
+  const content = JSON.parse(fileContents);
+  return { ...content, _id: relativePath };
 }
 
 export function getSettings() {
@@ -33,7 +35,7 @@ export function getAllPosts() {
       ...data,
     };
   });
-  
+
   return allPostsData.sort((a, b) => {
     if (a.date < b.date) {
       return 1;
@@ -50,13 +52,13 @@ export function getPostBySlug(slug) {
   const postsDirectory = path.join(contentDirectory, 'posts');
   const fileNames = fs.readdirSync(postsDirectory);
   const matchedFile = fileNames.find(file => file.replace(/\.md$/, '') === slug);
-  
+
   if (!matchedFile) return null;
 
   const fullPath = path.join(postsDirectory, matchedFile);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
-  
+
   return {
     slug,
     content,
