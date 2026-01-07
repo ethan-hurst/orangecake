@@ -30,6 +30,15 @@ export default defineStackbitConfig({
                     ]
                 },
                 {
+                    name: 'hero',
+                    type: 'object',
+                    label: 'Hero',
+                    fields: [
+                        { name: 'title', type: 'string', label: 'Title' },
+                        { name: 'description', type: 'markdown', label: 'Description' }
+                    ]
+                },
+                {
                     name: 'about',
                     type: 'page',
                     urlPath: '/about',
@@ -37,6 +46,22 @@ export default defineStackbitConfig({
                     fields: [
                         { name: 'title', type: 'string', label: 'Title', required: true },
                         { name: 'body', type: 'markdown', label: 'Body' }
+                    ]
+                },
+                {
+                    name: 'flexible_page',
+                    type: 'page',
+                    urlPath: '/{slug}',
+                    filePath: 'content/pages/{slug}.json',
+                    fields: [
+                        { name: 'title', type: 'string', label: 'Title', required: true },
+                        { name: 'body', type: 'markdown', label: 'Body' },
+                        {
+                            name: 'sections',
+                            type: 'list',
+                            label: 'Sections',
+                            items: { type: 'model', models: ['hero', 'features_grid'] }
+                        }
                     ]
                 },
                 {

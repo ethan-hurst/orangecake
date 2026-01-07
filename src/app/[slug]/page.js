@@ -3,6 +3,9 @@ import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import styles from './page.module.css';
 
+import Hero from '@/components/Hero';
+import FeaturesGrid from '@/components/FeaturesGrid';
+
 export default async function Page({ params }) {
   const { slug } = await params;
   const content = getPageContent(slug);
@@ -11,14 +14,39 @@ export default async function Page({ params }) {
     return notFound();
   }
 
-  const { title, body } = content;
+  const { title, body, sections } = content;
 
   return (
     <div className={`container ${styles.pageContent}`}>
-      <h1 className={styles.pageTitle}>{title}</h1>
-      <div className={styles.prose}>
-        <ReactMarkdown>{body}</ReactMarkdown>
-      </div>
+      {!sections && <h1 className={styles.pageTitle}>{title}</h1>}
+      {body && (
+        <div className={styles.prose}>
+          <ReactMarkdown>{body}</ReactMarkdown>
+        </div>
+      )}
+      {sections?.map((section, index) => {
+        if (section.type === 'hero') {
+          return (
+            <Hero
+              key={index}
+              title={section.title}
+              description={section.description}
+              fieldPath={`sections.${index}`}
+            />
+          );
+        }
+        if (section.type === 'features_grid') {
+          return (
+            <FeaturesGrid
+              key={index}
+              title={section.title}
+              features={section.features}
+              fieldPath={`sections.${index}`}
+            />
+          );
+        }
+        return null;
+      })}
     </div>
   );
 }

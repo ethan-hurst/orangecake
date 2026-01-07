@@ -17,15 +17,17 @@ export default function Home() {
         title={hero_title || title}
         description={hero_description}
         objectId={content._id}
+        titleField="hero_title"
+        descriptionField="hero_description"
       />
       {sections?.map((section, index) => {
-        if (section.features_grid) {
+        if (section.type === 'features_grid') {
           return (
             <FeaturesGrid
               key={index}
-              title={section.features_grid.title}
-              features={section.features_grid.features}
-              fieldPath={`sections.${index}.features_grid`}
+              title={section.title}
+              features={section.features}
+              fieldPath={`sections.${index}`}
             />
           );
         }
