@@ -61,6 +61,16 @@ export default async function Page({ params }) {
   );
 }
 
+import fs from 'fs';
+import path from 'path';
+
 export async function generateStaticParams() {
-  return [{ slug: 'about' }];
+  const pagesDirectory = path.join(process.cwd(), 'content/pages');
+  const filenames = fs.readdirSync(pagesDirectory);
+
+  return filenames
+    .filter((filename) => filename.endsWith('.json') && filename !== 'home.json')
+    .map((filename) => ({
+      slug: filename.replace(/\.json$/, ''),
+    }));
 }
